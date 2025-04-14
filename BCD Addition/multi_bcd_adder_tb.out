@@ -1,0 +1,246 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000014b2e4e29d0 .scope module, "multi_bcd_adder_tb" "multi_bcd_adder_tb" 2 3;
+ .timescale -9 -12;
+v0000014b2e551b80_0 .var "A", 7 0;
+v0000014b2e552bc0_0 .var "B", 7 0;
+v0000014b2e551cc0_0 .var "Cin", 0 0;
+v0000014b2e552b20_0 .net "Cout", 0 0, L_0000014b2e4f8f80;  1 drivers
+v0000014b2e553160_0 .net "Sum", 7 0, L_0000014b2e59c780;  1 drivers
+S_0000014b2e4e5220 .scope function.vec4.u32, "bcd_to_decimal" "bcd_to_decimal" 2 20, 2 20 0, S_0000014b2e4e29d0;
+ .timescale -9 -12;
+v0000014b2e4e1ab0_0 .var "bcd", 7 0;
+; Variable bcd_to_decimal is vec4 return value of scope S_0000014b2e4e5220
+TD_multi_bcd_adder_tb.bcd_to_decimal ;
+    %load/vec4 v0000014b2e4e1ab0_0;
+    %parti/s 4, 4, 4;
+    %pad/u 32;
+    %muli 10, 0, 32;
+    %load/vec4 v0000014b2e4e1ab0_0;
+    %parti/s 4, 0, 2;
+    %pad/u 32;
+    %add;
+    %ret/vec4 0, 0, 32;  Assign to bcd_to_decimal (store_vec4_to_lval)
+    %end;
+S_0000014b2e4e53b0 .scope module, "uut" "multi_bcd_adder" 2 11, 3 20 0, S_0000014b2e4e29d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "A";
+    .port_info 1 /INPUT 8 "B";
+    .port_info 2 /INPUT 1 "Cin";
+    .port_info 3 /OUTPUT 8 "Sum";
+    .port_info 4 /OUTPUT 1 "Cout";
+v0000014b2e552120_0 .net "A", 7 0, v0000014b2e551b80_0;  1 drivers
+v0000014b2e551860_0 .net "B", 7 0, v0000014b2e552bc0_0;  1 drivers
+v0000014b2e553020_0 .net "Cin", 0 0, v0000014b2e551cc0_0;  1 drivers
+v0000014b2e552ee0_0 .net "Cout", 0 0, L_0000014b2e4f8f80;  alias, 1 drivers
+v0000014b2e5524e0_0 .net "Sum", 7 0, L_0000014b2e59c780;  alias, 1 drivers
+v0000014b2e5530c0_0 .net "carry_low", 0 0, L_0000014b2e4f8c00;  1 drivers
+v0000014b2e552080_0 .net "sum_high", 3 0, L_0000014b2e4f8f10;  1 drivers
+v0000014b2e551900_0 .net "sum_low", 3 0, L_0000014b2e4f9680;  1 drivers
+L_0000014b2e551fe0 .part v0000014b2e551b80_0, 0, 4;
+L_0000014b2e552620 .part v0000014b2e552bc0_0, 0, 4;
+L_0000014b2e59c460 .part v0000014b2e551b80_0, 4, 4;
+L_0000014b2e59cfa0 .part v0000014b2e552bc0_0, 4, 4;
+L_0000014b2e59c780 .concat [ 4 4 0 0], L_0000014b2e4f9680, L_0000014b2e4f8f10;
+S_0000014b2e4e9ca0 .scope module, "bcd_high" "bcd_adder" 3 39, 3 1 0, S_0000014b2e4e53b0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "A";
+    .port_info 1 /INPUT 4 "B";
+    .port_info 2 /INPUT 1 "Cin";
+    .port_info 3 /OUTPUT 4 "Sum";
+    .port_info 4 /OUTPUT 1 "Cout";
+L_0000014b2e4f8f10 .functor BUFZ 4, L_0000014b2e59cbe0, C4<0000>, C4<0000>, C4<0000>;
+L_0000014b2e4f8f80 .functor BUFZ 1, L_0000014b2e59ce60, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e25f0_0 .net "A", 3 0, L_0000014b2e59c460;  1 drivers
+v0000014b2e4e1d30_0 .net "B", 3 0, L_0000014b2e59cfa0;  1 drivers
+v0000014b2e4e1dd0_0 .net "Cin", 0 0, L_0000014b2e4f8c00;  alias, 1 drivers
+v0000014b2e4e1a10_0 .net "Cout", 0 0, L_0000014b2e4f8f80;  alias, 1 drivers
+v0000014b2e4e2690_0 .net "Sum", 3 0, L_0000014b2e4f8f10;  alias, 1 drivers
+v0000014b2e4e1fb0_0 .net *"_ivl_0", 4 0, L_0000014b2e5535c0;  1 drivers
+v0000014b2e4e2910_0 .net *"_ivl_10", 4 0, L_0000014b2e59d5e0;  1 drivers
+L_0000014b2e5539c8 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e2190_0 .net *"_ivl_13", 3 0, L_0000014b2e5539c8;  1 drivers
+v0000014b2e4e2230_0 .net *"_ivl_16", 31 0, L_0000014b2e59c3c0;  1 drivers
+L_0000014b2e553a10 .functor BUFT 1, C4<000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e20f0_0 .net *"_ivl_19", 26 0, L_0000014b2e553a10;  1 drivers
+L_0000014b2e553a58 .functor BUFT 1, C4<00000000000000000000000000001001>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e22d0_0 .net/2u *"_ivl_20", 31 0, L_0000014b2e553a58;  1 drivers
+L_0000014b2e553aa0 .functor BUFT 1, C4<00110>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e1b50_0 .net/2u *"_ivl_24", 4 0, L_0000014b2e553aa0;  1 drivers
+v0000014b2e4e2370_0 .net *"_ivl_26", 4 0, L_0000014b2e59c1e0;  1 drivers
+v0000014b2e4e24b0_0 .net *"_ivl_28", 4 0, L_0000014b2e59caa0;  1 drivers
+L_0000014b2e553938 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e1bf0_0 .net *"_ivl_3", 0 0, L_0000014b2e553938;  1 drivers
+v0000014b2e4e2550_0 .net *"_ivl_4", 4 0, L_0000014b2e5529e0;  1 drivers
+L_0000014b2e553980 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000014b2e4e1c90_0 .net *"_ivl_7", 0 0, L_0000014b2e553980;  1 drivers
+v0000014b2e4e2730_0 .net *"_ivl_8", 4 0, L_0000014b2e552a80;  1 drivers
+v0000014b2e4e27d0_0 .net "corrected_sum", 3 0, L_0000014b2e59cbe0;  1 drivers
+v0000014b2e4e2870_0 .net "correction_needed", 0 0, L_0000014b2e59ce60;  1 drivers
+v0000014b2e552260_0 .net "temp_sum", 4 0, L_0000014b2e59c140;  1 drivers
+L_0000014b2e5535c0 .concat [ 4 1 0 0], L_0000014b2e59c460, L_0000014b2e553938;
+L_0000014b2e5529e0 .concat [ 4 1 0 0], L_0000014b2e59cfa0, L_0000014b2e553980;
+L_0000014b2e552a80 .arith/sum 5, L_0000014b2e5535c0, L_0000014b2e5529e0;
+L_0000014b2e59d5e0 .concat [ 1 4 0 0], L_0000014b2e4f8c00, L_0000014b2e5539c8;
+L_0000014b2e59c140 .arith/sum 5, L_0000014b2e552a80, L_0000014b2e59d5e0;
+L_0000014b2e59c3c0 .concat [ 5 27 0 0], L_0000014b2e59c140, L_0000014b2e553a10;
+L_0000014b2e59ce60 .cmp/gt 32, L_0000014b2e59c3c0, L_0000014b2e553a58;
+L_0000014b2e59c1e0 .arith/sum 5, L_0000014b2e59c140, L_0000014b2e553aa0;
+L_0000014b2e59caa0 .functor MUXZ 5, L_0000014b2e59c140, L_0000014b2e59c1e0, L_0000014b2e59ce60, C4<>;
+L_0000014b2e59cbe0 .part L_0000014b2e59caa0, 0, 4;
+S_0000014b2e4e9e30 .scope module, "bcd_low" "bcd_adder" 3 31, 3 1 0, S_0000014b2e4e53b0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "A";
+    .port_info 1 /INPUT 4 "B";
+    .port_info 2 /INPUT 1 "Cin";
+    .port_info 3 /OUTPUT 4 "Sum";
+    .port_info 4 /OUTPUT 1 "Cout";
+L_0000014b2e4f9680 .functor BUFZ 4, L_0000014b2e553520, C4<0000>, C4<0000>, C4<0000>;
+L_0000014b2e4f8c00 .functor BUFZ 1, L_0000014b2e551d60, C4<0>, C4<0>, C4<0>;
+v0000014b2e553200_0 .net "A", 3 0, L_0000014b2e551fe0;  1 drivers
+v0000014b2e5519a0_0 .net "B", 3 0, L_0000014b2e552620;  1 drivers
+v0000014b2e5526c0_0 .net "Cin", 0 0, v0000014b2e551cc0_0;  alias, 1 drivers
+v0000014b2e5521c0_0 .net "Cout", 0 0, L_0000014b2e4f8c00;  alias, 1 drivers
+v0000014b2e551ea0_0 .net "Sum", 3 0, L_0000014b2e4f9680;  alias, 1 drivers
+v0000014b2e552440_0 .net *"_ivl_0", 4 0, L_0000014b2e552800;  1 drivers
+v0000014b2e553340_0 .net *"_ivl_10", 4 0, L_0000014b2e551c20;  1 drivers
+L_0000014b2e553818 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0000014b2e5517c0_0 .net *"_ivl_13", 3 0, L_0000014b2e553818;  1 drivers
+v0000014b2e552d00_0 .net *"_ivl_16", 31 0, L_0000014b2e551f40;  1 drivers
+L_0000014b2e553860 .functor BUFT 1, C4<000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0000014b2e552c60_0 .net *"_ivl_19", 26 0, L_0000014b2e553860;  1 drivers
+L_0000014b2e5538a8 .functor BUFT 1, C4<00000000000000000000000000001001>, C4<0>, C4<0>, C4<0>;
+v0000014b2e552f80_0 .net/2u *"_ivl_20", 31 0, L_0000014b2e5538a8;  1 drivers
+L_0000014b2e5538f0 .functor BUFT 1, C4<00110>, C4<0>, C4<0>, C4<0>;
+v0000014b2e551a40_0 .net/2u *"_ivl_24", 4 0, L_0000014b2e5538f0;  1 drivers
+v0000014b2e552940_0 .net *"_ivl_26", 4 0, L_0000014b2e553480;  1 drivers
+v0000014b2e553660_0 .net *"_ivl_28", 4 0, L_0000014b2e552580;  1 drivers
+L_0000014b2e553788 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000014b2e551ae0_0 .net *"_ivl_3", 0 0, L_0000014b2e553788;  1 drivers
+v0000014b2e552300_0 .net *"_ivl_4", 4 0, L_0000014b2e5532a0;  1 drivers
+L_0000014b2e5537d0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000014b2e552760_0 .net *"_ivl_7", 0 0, L_0000014b2e5537d0;  1 drivers
+v0000014b2e552da0_0 .net *"_ivl_8", 4 0, L_0000014b2e5528a0;  1 drivers
+v0000014b2e552e40_0 .net "corrected_sum", 3 0, L_0000014b2e553520;  1 drivers
+v0000014b2e551e00_0 .net "correction_needed", 0 0, L_0000014b2e551d60;  1 drivers
+v0000014b2e5523a0_0 .net "temp_sum", 4 0, L_0000014b2e5533e0;  1 drivers
+L_0000014b2e552800 .concat [ 4 1 0 0], L_0000014b2e551fe0, L_0000014b2e553788;
+L_0000014b2e5532a0 .concat [ 4 1 0 0], L_0000014b2e552620, L_0000014b2e5537d0;
+L_0000014b2e5528a0 .arith/sum 5, L_0000014b2e552800, L_0000014b2e5532a0;
+L_0000014b2e551c20 .concat [ 1 4 0 0], v0000014b2e551cc0_0, L_0000014b2e553818;
+L_0000014b2e5533e0 .arith/sum 5, L_0000014b2e5528a0, L_0000014b2e551c20;
+L_0000014b2e551f40 .concat [ 5 27 0 0], L_0000014b2e5533e0, L_0000014b2e553860;
+L_0000014b2e551d60 .cmp/gt 32, L_0000014b2e551f40, L_0000014b2e5538a8;
+L_0000014b2e553480 .arith/sum 5, L_0000014b2e5533e0, L_0000014b2e5538f0;
+L_0000014b2e552580 .functor MUXZ 5, L_0000014b2e5533e0, L_0000014b2e553480, L_0000014b2e551d60, C4<>;
+L_0000014b2e553520 .part L_0000014b2e552580, 0, 4;
+    .scope S_0000014b2e4e29d0;
+T_1 ;
+    %vpi_call 2 25 "$dumpfile", "multi_bcd_adder_tb.vcd" {0 0 0};
+    %vpi_call 2 26 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000014b2e4e29d0 {0 0 0};
+    %vpi_call 2 28 "$display", "=================================================================================================" {0 0 0};
+    %vpi_call 2 29 "$display", "| Time(ns) | A (BCD)  | B (BCD)  | Cin  |   Sum (BCD)   | Cout | A (Dec) | B (Dec) | Sum (Dec) |" {0 0 0};
+    %vpi_call 2 30 "$display", "=================================================================================================" {0 0 0};
+    %pushi/vec4 5, 0, 8;
+    %store/vec4 v0000014b2e551b80_0, 0, 8;
+    %pushi/vec4 3, 0, 8;
+    %store/vec4 v0000014b2e552bc0_0, 0, 8;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000014b2e551cc0_0, 0, 1;
+    %delay 10000, 0;
+    %load/vec4 v0000014b2e551b80_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e552bc0_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e553160_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %vpi_call 2 35 "$display", "| %8d | %b | %b |  %b  |    %b    |  %b   |   %3d   |   %3d   |    %3d    |", $time, v0000014b2e551b80_0, v0000014b2e552bc0_0, v0000014b2e551cc0_0, v0000014b2e553160_0, v0000014b2e552b20_0, S<2,vec4,s32>, S<1,vec4,s32>, S<0,vec4,s32> {3 0 0};
+    %pushi/vec4 9, 0, 8;
+    %store/vec4 v0000014b2e551b80_0, 0, 8;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v0000014b2e552bc0_0, 0, 8;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000014b2e551cc0_0, 0, 1;
+    %delay 10000, 0;
+    %load/vec4 v0000014b2e551b80_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e552bc0_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e553160_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %vpi_call 2 41 "$display", "| %8d | %b | %b |  %b  |    %b    |  %b   |   %3d   |   %3d   |    %3d    |", $time, v0000014b2e551b80_0, v0000014b2e552bc0_0, v0000014b2e551cc0_0, v0000014b2e553160_0, v0000014b2e552b20_0, S<2,vec4,s32>, S<1,vec4,s32>, S<0,vec4,s32> {3 0 0};
+    %pushi/vec4 22, 0, 8;
+    %store/vec4 v0000014b2e551b80_0, 0, 8;
+    %pushi/vec4 22, 0, 8;
+    %store/vec4 v0000014b2e552bc0_0, 0, 8;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000014b2e551cc0_0, 0, 1;
+    %delay 10000, 0;
+    %load/vec4 v0000014b2e551b80_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e552bc0_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e553160_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %vpi_call 2 47 "$display", "| %8d | %b | %b |  %b  |    %b    |  %b   |   %3d   |   %3d   |    %3d    |", $time, v0000014b2e551b80_0, v0000014b2e552bc0_0, v0000014b2e551cc0_0, v0000014b2e553160_0, v0000014b2e552b20_0, S<2,vec4,s32>, S<1,vec4,s32>, S<0,vec4,s32> {3 0 0};
+    %pushi/vec4 36, 0, 8;
+    %store/vec4 v0000014b2e551b80_0, 0, 8;
+    %pushi/vec4 21, 0, 8;
+    %store/vec4 v0000014b2e552bc0_0, 0, 8;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000014b2e551cc0_0, 0, 1;
+    %delay 10000, 0;
+    %load/vec4 v0000014b2e551b80_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e552bc0_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e553160_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %vpi_call 2 53 "$display", "| %8d | %b | %b |  %b  |    %b    |  %b   |   %3d   |   %3d   |    %3d    |", $time, v0000014b2e551b80_0, v0000014b2e552bc0_0, v0000014b2e551cc0_0, v0000014b2e553160_0, v0000014b2e552b20_0, S<2,vec4,s32>, S<1,vec4,s32>, S<0,vec4,s32> {3 0 0};
+    %pushi/vec4 153, 0, 8;
+    %store/vec4 v0000014b2e551b80_0, 0, 8;
+    %pushi/vec4 153, 0, 8;
+    %store/vec4 v0000014b2e552bc0_0, 0, 8;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000014b2e551cc0_0, 0, 1;
+    %delay 10000, 0;
+    %load/vec4 v0000014b2e551b80_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e552bc0_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %load/vec4 v0000014b2e553160_0;
+    %store/vec4 v0000014b2e4e1ab0_0, 0, 8;
+    %callf/vec4 TD_multi_bcd_adder_tb.bcd_to_decimal, S_0000014b2e4e5220;
+    %vpi_call 2 59 "$display", "| %8d | %b | %b |  %b  |    %b    |  %b   |   %3d   |   %3d   |    %3d    |", $time, v0000014b2e551b80_0, v0000014b2e552bc0_0, v0000014b2e551cc0_0, v0000014b2e553160_0, v0000014b2e552b20_0, S<2,vec4,s32>, S<1,vec4,s32>, S<0,vec4,s32> {3 0 0};
+    %vpi_call 2 62 "$display", "================================================================================================" {0 0 0};
+    %vpi_call 2 63 "$display", "Testbench Completed." {0 0 0};
+    %vpi_call 2 64 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "multi_bcd_addition_tb.v";
+    "multi_bcd_addition.v";
